@@ -49,7 +49,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           withCredentials: true,
         });
 
-          console.log(response.data);
+
         if (response.data.isAuthenticated && response.data.user) {
           setUser(response.data.user);
           if (!response.data.user.isSetupComplete) {

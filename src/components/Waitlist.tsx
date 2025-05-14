@@ -42,7 +42,7 @@ const Waitlist: React.FC = () => {
       throw error;
     } else {
       JoinedWaitlist();
-      console.log("Data inserted successfully:", data);
+
     }
   };
 

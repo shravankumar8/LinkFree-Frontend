@@ -60,7 +60,7 @@ const [loading, setLoading] = useState(true);
        );
        const data = response.data;
        // Update state with the fetched stats from the backend
-       console.log("Fetched stats:", data);
+
        setStats((prevStats) =>
          prevStats.map((stat) => {
            const updatedStat = data.find((item) => item.title === stat.title);

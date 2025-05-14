@@ -84,6 +84,7 @@ const PortfolioCard: React.FC = () => {
   const handleLinkClick = async (linkUrl: string, linkTitle: string) => {
     try {
       // Construct the tracking URL
+      window.open(linkUrl, "_blank", "noopener,noreferrer");
       const trackUrl = slug
         ? `${API_URL}/api/portfolio/${username}/${slug}/track-link`
         : `${API_URL}/api/portfolio/${username}/track-link`;
@@ -92,7 +93,6 @@ const PortfolioCard: React.FC = () => {
       await axios.post(trackUrl, { url: linkUrl });
 
       // Redirect to the link URL after tracking
-      window.open(linkUrl, "_blank", "noopener,noreferrer");
     } catch (err) {
       console.error("Error tracking link click:", err);
       toast({

@@ -73,7 +73,7 @@ const Login = () => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    console.log(values);
+
     try {
       const response = await axios.post(
         `${API_URL}/api/user/login`,

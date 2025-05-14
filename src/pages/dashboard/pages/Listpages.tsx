@@ -45,7 +45,7 @@ const ListPages = () => {
           withCredentials: true,
         });
         const data = response.data;
-        console.log(data);
+
         setPages(Array.isArray(data) ? data : []); // Ensure pages is an array
       } catch (error) {
         console.error("Failed to fetch pages:", error);

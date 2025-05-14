@@ -91,7 +91,7 @@ const Signup = () => {
 
   const handleSubmit = async (values) => {
     setIsLoading(true);
-    console.log(values);
+
 
     try {
       const response = await axios.post(
@@ -105,7 +105,7 @@ const Signup = () => {
           withCredentials: true,
         }
       );
-      console.log("Signup successful:", response.data);
+
       toast({
         title: "Account created!",
         description: "We've created your account for you.",

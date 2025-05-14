@@ -56,14 +56,7 @@ const App = () => (
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="/"
-              element={
-                <ProtectedRoute>
-                  <EditPage />
-                </ProtectedRoute>
-              }
-            />
+         
             <Route path="/" element={<Index />} />
             <Route
               path="/dashboard"

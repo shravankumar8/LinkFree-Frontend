@@ -86,7 +86,7 @@ const API_URL = import.meta.env.VITE_API_URL;
         }
       );
      
-      console.log(visibilityResponse)
+
 
    
 
@@ -154,14 +154,14 @@ const API_URL = import.meta.env.VITE_API_URL;
           withCredentials: true,
         });
         const pageData = res.data;
-        console.log("raw pageData:", res.data);
+
         setPage(pageData);
         setUserData(pageData.user.profilePic);
         setBackgroundImage(pageData.background || "");
         setBio(pageData.bio || pageData.user.bio || "");
         setLinks(pageData.links || []);
         setDisplayName(pageData.user.displayName || "");
-        console.log("raw links:", pageData.socialLinks);
+
         setSlug(pageData.slug || "");
         setTotalViews(pageData.totalViews || 0);
         setLinkClicks(pageData.linkClicks || 0);
@@ -215,7 +215,7 @@ const API_URL = import.meta.env.VITE_API_URL;
       "w-full rounded-lg overflow-hidden aspect-[9/16] relative mb-4 flex flex-col items-center";
 
     if (backgroundImage && backgroundImage.startsWith("bg-")) {
-      console.log(backgroundImage);
+
       return { className: `${baseClass} ${backgroundImage}` };
     } else if (backgroundImage) {
       return {

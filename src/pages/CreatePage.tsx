@@ -151,7 +151,7 @@ const CreatePage = () => {
         );
 
         const pageData = res.data;
-        console.log(pageData);
+
         setPage(pageData);
         setBio(pageData.bio || pageData.user.bio || "");
         setIsDefault(pageData.isDefault);
@@ -196,7 +196,7 @@ const CreatePage = () => {
       "w-full rounded-lg overflow-hidden aspect-[9/16] relative mb-4 flex flex-col items-center";
 
     if (backgroundImage && backgroundImage.startsWith("bg-")) {
-      console.log(backgroundImage);
+
       return { className: `${baseClass} ${backgroundImage}` };
     } else if (backgroundImage) {
       return {
