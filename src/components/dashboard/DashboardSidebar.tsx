@@ -47,12 +47,15 @@ const { user, logout } = useAuth();
     <Sidebar>
       <SidebarRail />
       <SidebarHeader className="flex h-14 items-center border-b px-4 lg:h-[60px]">
-        <Link to="/" className="flex items-center gap-2 font-semibold">
-          <span className="text-xl font-semibold">
+        <div className="flex items-center">
+          <a
+            href="/"
+            className="text-2xl font-semibold text-primary flex items-center"
+          >
             <span className="text-gradient">Link</span>
             <span>Free</span>
-          </span>
-        </Link>
+          </a>
+        </div>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>

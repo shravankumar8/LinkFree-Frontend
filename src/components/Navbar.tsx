@@ -171,7 +171,7 @@ const Navbar: React.FC = () => {
                 navigate("/dashboard");
               }}
             >
-              Join Waitlist
+              Get Started
             </Button>
           )}
          
