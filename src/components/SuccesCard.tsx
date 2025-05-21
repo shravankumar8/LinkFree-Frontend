@@ -14,26 +14,35 @@ import {
 interface SuccessCardProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  profileLink: string;
+
   username: string;
+  slug?: string;
+  isDefault?: boolean;
   onShareClick: () => void;
 }
-
+const VITE_FRONTEND_URL = import.meta.env.VITE_FRONTEND_URL;
 const SuccessCard: React.FC<SuccessCardProps> = ({
   open,
   onOpenChange,
-  profileLink,
+  slug,
+  isDefault,
   username,
   onShareClick,
 }) => {
   const { toast } = useToast();
+ let shareUrl;
+ if (isDefault) {
+   shareUrl = `${VITE_FRONTEND_URL}/${username}`;
+ } else {
+   shareUrl = `${VITE_FRONTEND_URL}/${username}/${slug}`;
+ }
 
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(profileLink);
+      await navigator.clipboard.writeText(shareUrl);
       toast({
         title: "Link copied!",
-        description: "Profile link has been copied to clipboard.",
+        description: "Page link has been copied to clipboard.",
       });
     } catch (err) {
       toast({
@@ -54,17 +63,17 @@ const SuccessCard: React.FC<SuccessCardProps> = ({
                 <Check className="h-8 w-8 text-green-600" />
               </div>
             </div>
-            <CardTitle className="text-center">Profile Published!</CardTitle>
+            <CardTitle className="text-center">Page Published!</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-center mb-6">
               <p className="text-muted-foreground mb-4">
-                Your profile is now live and can be accessed at this link:
+                Your Page is now live and can be accessed at this link:
               </p>
               <div className="flex items-center justify-between p-3 bg-muted rounded-md">
                 <div className="flex items-center gap-2 overflow-hidden">
                   <Link className="h-4 w-4 flex-shrink-0" />
-                  <p className="text-sm truncate">{profileLink}</p>
+                  <p className="text-sm truncate">{shareUrl}</p>
                 </div>
                 <Button variant="ghost" size="sm" onClick={copyToClipboard}>
                   <Copy className="h-4 w-4" />
@@ -75,11 +84,11 @@ const SuccessCard: React.FC<SuccessCardProps> = ({
               <Button
                 className="w-full"
                 onClick={() => {
-                  window.open(profileLink, "_blank");
+                  window.open(shareUrl, "_blank");
                 }}
               >
                 <ExternalLink className="mr-2 h-4 w-4" />
-                View Profile
+                view page
               </Button>
               <Button
                 variant="outline"

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, ReactNode } from "react";
+import React, { createContext, useState, useEffect, ReactNode, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -90,7 +90,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         withCredentials: true,
       });
       setUser(null);
-      navigate("/login");
+      navigate("/");
     } catch (err) {
       console.error("Logout failed:", err);
     }
@@ -105,3 +105,4 @@ return (
   </AuthContext.Provider>
 );
 };
+export const useAuth = () => useContext(AuthContext);

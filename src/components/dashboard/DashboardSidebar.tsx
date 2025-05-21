@@ -24,10 +24,10 @@ import {
   User,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
+import { useAuth } from "@/context/AuthContext";
 const DashboardSidebar: React.FC = () => {
   const location = useLocation();
-
+const { user, logout } = useAuth();
   const mainMenuItems = [
     { title: "Overview", path: "/dashboard", icon: LayoutDashboard },
     { title: "Pages", path: "/dashboard/pages", icon: LinkIcon },
@@ -46,12 +46,13 @@ const DashboardSidebar: React.FC = () => {
   return (
     <Sidebar>
       <SidebarRail />
-      <SidebarHeader>
-        <div className="flex items-center px-4 py-2">
-          <div className="font-semibold text-xl bg-gradient-to-r from-accent to-blue-500 bg-clip-text text-transparent">
-            LinkFree
-          </div>
-        </div>
+      <SidebarHeader className="flex h-14 items-center border-b px-4 lg:h-[60px]">
+        <Link to="/" className="flex items-center gap-2 font-semibold">
+          <span className="text-xl font-semibold">
+            <span className="text-gradient">Link</span>
+            <span>Free</span>
+          </span>
+        </Link>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
@@ -97,17 +98,18 @@ const DashboardSidebar: React.FC = () => {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild tooltip="Sign Out">
-              <Link to="/" className="text-red-500 hover:text-red-600">
-                <LogOut />
-                <span>Sign Out</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
+      <SidebarFooter className="border-t p-4">
+        <Link to="/">
+          <Button
+            onClick={logout}
+            variant="outline"
+            className="w-full text-red-500 justify-start"
+            size="sm"
+          >
+            <LogOut className="mr-2  h-4 w-4" />
+            Sign Out
+          </Button>
+        </Link>
       </SidebarFooter>
     </Sidebar>
   );

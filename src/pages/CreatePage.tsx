@@ -477,8 +477,11 @@ const CreatePage = () => {
       <SuccessCard
         open={showSuccessCard}
         onOpenChange={setShowSuccessCard}
-        profileLink={profileLink}
-        username={username}
+        slug={slug}
+        isDefault={isDefault}
+
+        username={username.replace(/\s+/g, "").toLowerCase()}
+
         onShareClick={handleShareClick}
       />
 

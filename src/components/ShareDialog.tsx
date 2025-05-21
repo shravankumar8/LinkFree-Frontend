@@ -28,6 +28,7 @@ interface ShareDialogProps {
   slug?: string;
   isDefault?: boolean;
 }
+const VITE_FRONTEND_URL = import.meta.env.VITE_FRONTEND_URL;
 
 const ShareDialog: React.FC<ShareDialogProps> = ({
   open,
@@ -42,9 +43,9 @@ const ShareDialog: React.FC<ShareDialogProps> = ({
   // Generate a sample share URL - in a real app this would be a real URL
   let shareUrl;
   if (isDefault) {
-    shareUrl = `https://linkfree.tech/${username}`;
+    shareUrl = `${VITE_FRONTEND_URL}/${username}`;
   }else{
-    shareUrl = `https://linkfree.tech/${username}/${slug}`;
+    shareUrl = `${VITE_FRONTEND_URL}/${username}/${slug}`;
   }
 
   const handleCopyLink = () => {
@@ -65,12 +66,12 @@ const ShareDialog: React.FC<ShareDialogProps> = ({
     switch (platform) {
       case "twitter":
         shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-          `https://linkfree.tech/${username}`
+          `${VITE_FRONTEND_URL}/${username}`
         )}&text=Check out my LinkFree profile!`;
         break;
       case "facebook":
         shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-          `https://linkfree.tech/${username}`
+          `${VITE_FRONTEND_URL}/${username}`
         )}`;
         break;
       case "instagram":
@@ -105,7 +106,7 @@ const ShareDialog: React.FC<ShareDialogProps> = ({
 
   const handlePreview = () => {
     // In a real app, this would open the live profile in a new tab
-    window.open(`https://linkfree.tech/${username}`, "_blank");
+    window.open(`${VITE_FRONTEND_URL}/${username}`, "_blank");
 
     toast({
       title: "Opening preview",
